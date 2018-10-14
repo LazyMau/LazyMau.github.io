@@ -303,8 +303,8 @@
       
         
           
-            <hr>
-<h2 id="title-“-记录-配置powershell-vim”date-2018-10-14-15-57-17tags"><a href="#title-“-记录-配置powershell-vim”date-2018-10-14-15-57-17tags" class="headerlink" title="title: “[记录]配置powershell+vim”date: 2018-10-14 15:57:17tags:"></a>title: “[记录]配置powershell+vim”date: 2018-10-14 15:57:17tags:</h2><h1 id="记录-配置powershell-vim"><a href="#记录-配置powershell-vim" class="headerlink" title="[记录]配置powershell+vim"></a>[记录]配置powershell+vim</h1><h2 id="0-下载vim"><a href="#0-下载vim" class="headerlink" title="0.下载vim"></a>0.下载vim</h2><p>1.本来之前用git的时候里面自带了一个vim，但是打不开（可能是之前用ise的原因，但是之后也没试过），于是就重新下载了vim</p>
+            <p>title: ‘[记录]配置powershell+vim’<br>date: 2018-10-14 15:57:17<br>tags:</p>
+<h1 id="记录-配置powershell-vim"><a href="#记录-配置powershell-vim" class="headerlink" title="[记录]配置powershell+vim"></a>[记录]配置powershell+vim</h1><h2 id="下载vim"><a href="#下载vim" class="headerlink" title="下载vim"></a>下载vim</h2><p>1.本来之前用git的时候里面自带了一个vim，但是打不开（可能是之前用ise的原因，但是之后也没试过），于是就重新下载了vim</p>
 <p>2.修改_vimrc，（去网上搜了一些常用的）</p>
 <p>3.设置PowerShell环境，使能“allow scripts to run”选项，步骤如下：</p>
 <ul>
@@ -317,8 +317,8 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">new-item -path $profile -itemtype file -force</span><br><span class="line">notepad $profile</span><br><span class="line">然后在打开的配置文件中添加：</span><br><span class="line">set-alias vim &quot;C:/Program Files/Vim/Vim74/./vim.exe&quot;#这边的改成自己下载的位置</span><br><span class="line"></span><br><span class="line"># To edit the Powershell Profile</span><br><span class="line"># (Not that I&apos;ll remember this)</span><br><span class="line">Function Edit-Profile</span><br><span class="line">&#123; </span><br><span class="line">    vim $profile</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># To edit Vim settings</span><br><span class="line">Function Edit-Vimrc</span><br><span class="line">&#123; </span><br><span class="line">    vim $HOME\_vimrc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后重启Powershell。即可使用。</p>
-<h2 id="1-win10自带powershell"><a href="#1-win10自带powershell" class="headerlink" title="1.win10自带powershell"></a>1.win10自带powershell</h2><p>1.刚开始用的powershell-ise ，但是打不开vim。后面找到了powershell，可以直接在他自己的窗口中打开vim</p>
-<h2 id="2-解决win10下powershell中打开文件里面中文显示乱码"><a href="#2-解决win10下powershell中打开文件里面中文显示乱码" class="headerlink" title="2.解决win10下powershell中打开文件里面中文显示乱码"></a>2.解决win10下powershell中打开文件里面中文显示乱码</h2><p>1.运行-&gt;regedit</p>
+<h2 id="win10自带powershell"><a href="#win10自带powershell" class="headerlink" title="win10自带powershell"></a>win10自带powershell</h2><p>1.刚开始用的powershell-ise ，但是打不开vim。后面找到了powershell，可以直接在他自己的窗口中打开vim</p>
+<h2 id="解决win10下powershell中打开文件里面中文显示乱码"><a href="#解决win10下powershell中打开文件里面中文显示乱码" class="headerlink" title="解决win10下powershell中打开文件里面中文显示乱码"></a>解决win10下powershell中打开文件里面中文显示乱码</h2><p>1.运行-&gt;regedit</p>
 <p>2.找到下面两项，在其中右键选择新建DWORD，名字都叫CodePage，值为3a8（十进制936）</p>
 <p>HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe</p>
 <p>HKEY_CURRENT_USER\Console\%SystemRoot%_SysWOW64_WindowsPowerShell_v1.0_powershell.exe</p>
