@@ -232,6 +232,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://LazyMau.github.io/2018/10/14/2018_10_14_记录_配置powershell-vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LazyMau">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="繁芜之渡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/14/2018_10_14_记录_配置powershell-vim/" itemprop="url">\[记录\]配置powershell+vim</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T15:57:17+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="记录-配置powershell-vim过程中踩得一些坑"><a href="#记录-配置powershell-vim过程中踩得一些坑" class="headerlink" title="[记录]配置powershell+vim过程中踩得一些坑"></a>[记录]配置powershell+vim过程中踩得一些坑</h1><h2 id="下载vim"><a href="#下载vim" class="headerlink" title="下载vim"></a>下载vim</h2><p>1.本来之前用git的时候里面自带了一个vim，但是打不开（可能是之前用ise的原因，但是之后也没试过），于是就重新下载了vim</p>
+<p>2.修改_vimrc，（去网上搜了一些常用的）</p>
+<p>3.设置PowerShell环境，使能“allow scripts to run”选项，步骤如下：</p>
+<ul>
+<li><p>以管理员的身份运行PowerShell</p>
+</li>
+<li><p>执行Set-ExecutionPolicy RemoteSigned命令</p>
+</li>
+<li><p>使用new-item命令，创建一个PowerShell的配置文件Profile</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">new-item -path $profile -itemtype file -force</span><br><span class="line">notepad $profile</span><br><span class="line">然后在打开的配置文件中添加：</span><br><span class="line">set-alias vim &quot;C:/Program Files/Vim/Vim74/./vim.exe&quot;#这边的改成自己下载的位置</span><br><span class="line"></span><br><span class="line"># To edit the Powershell Profile</span><br><span class="line"># (Not that I&apos;ll remember this)</span><br><span class="line">Function Edit-Profile</span><br><span class="line">&#123; </span><br><span class="line">    vim $profile</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># To edit Vim settings</span><br><span class="line">Function Edit-Vimrc</span><br><span class="line">&#123; </span><br><span class="line">    vim $HOME\_vimrc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后重启Powershell。即可使用。</p>
+<h2 id="win10自带powershell"><a href="#win10自带powershell" class="headerlink" title="win10自带powershell"></a>win10自带powershell</h2><p>1.刚开始用的powershell-ise ，但是打不开vim。后面找到了powershell，可以直接在他自己的窗口中打开vim</p>
+<h2 id="解决win10下powershell中打开文件里面中文显示乱码"><a href="#解决win10下powershell中打开文件里面中文显示乱码" class="headerlink" title="解决win10下powershell中打开文件里面中文显示乱码"></a>解决win10下powershell中打开文件里面中文显示乱码</h2><p>1.运行-&gt;regedit</p>
+<p>2.找到下面两项，在其中右键选择新建DWORD，名字都叫CodePage，值为3a8（十进制936）</p>
+<p>HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe</p>
+<p>HKEY_CURRENT_USER\Console\%SystemRoot%_SysWOW64_WindowsPowerShell_v1.0_powershell.exe</p>
+<p>}}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://LazyMau.github.io/2018/10/05/hexo-gitpage搭建博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -617,7 +755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
